@@ -1,0 +1,333 @@
+@import '_vars.scss';
+
+// FLEX
+.flex {
+    display: flex;
+}
+
+.f-jcsb {
+    display: flex;
+    justify-content: space-between;
+}
+
+.f-jcsa {
+    display: flex;
+    justify-content: space-around;
+}
+
+.f-center {
+    display: flex;
+    align-items: center;
+}
+
+.f-jcsb-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.f-jcsa-center {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.f-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-dc {
+    display: flex;
+    flex-direction: column;
+}
+
+.f-dc-jcsb {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.f-dc-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.f-dc-center-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+// IMAGE
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+
+.img-contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+}
+
+
+.pt-75 {
+    padding-top: 75px;
+}
+
+.pb-60 {
+    padding-bottom: 60px;
+}
+
+.pb-130 {
+    padding-bottom: 130px;
+}
+
+//TITLE
+.title {
+    color: #FFF;
+    font-family: "Gilroy Medium";
+    font-size: 50px;
+    font-style: normal;
+    line-height: 120%;
+    text-align: center;
+
+
+    span {
+        color: #FFFFFF;
+        font-size: 50px;
+        font-family: "Gilroy Medium";
+        transition: $anim-default;
+        background: linear-gradient(96deg, #69E6EC 26.21%, #BC69FA 102.69%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+}
+
+.input {
+    border-radius: 600px;
+    background: transparent;
+    width: 100%;
+    font-size: 16px;
+    padding: 17px 30px;
+    z-index: 2;
+
+
+}
+
+
+.btn {
+    position: relative;
+    transition: $anim-default;
+    border-radius: 60px;
+    text-transform: uppercase;
+    width: 225px;
+    padding: 17px 40px;
+    background: linear-gradient(96deg, #69E6EC 26.21%, #BC69FA 102.69%);
+    display: block;
+    text-align: center;
+    margin-bottom: 40px;
+
+    span {
+        font-size: 12px;
+        font-family: "Gilroy Semibold";
+    }
+
+
+}
+
+.btn-a {
+    position: relative;
+    transition: $anim-default;
+    border-radius: 60px;
+    padding: 15px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    text-align: center;
+    display: block;
+    width: 212px;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: $anim-default;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(96deg, #69E6EC 26.21%, #BC69FA 102.69%);
+        opacity: 0;
+        transition: $anim-default;
+    }
+
+    span {
+        font-size: 14px;
+        line-height: 100%;
+        position: relative;
+        z-index: 2;
+    }
+
+    &:hover {
+        border: 1px solid transparent;
+
+        &::after {
+            opacity: 1;
+        }
+    }
+
+
+}
+
+.hidden {
+    overflow: hidden;
+
+}
+
+.none {
+    display: none;
+}
+
+
+.page {
+    &-wrapper {
+        &>span {
+            color: #fff;
+            font-family: 'GolosText Regular';
+            width: 40px;
+            height: 52px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 16px;
+        }
+    }
+
+    &__btn {
+        border-radius: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.20);
+        width: 46px;
+        height: 48px;
+        padding: 16px;
+        transition: $anim-default;
+        overflow: hidden;
+        position: relative;
+
+        &::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background: #FFF;;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: $anim-default;
+        }
+
+        span {
+            position: relative;
+            z-index: 1;
+            transition: $anim-default;
+            font-family: 'Gilroy Regular';
+        }
+
+        svg {
+            position: relative;
+            z-index: 1;
+
+            path {
+                transition: $anim-default;
+            }
+        }
+
+        &:hover {
+            
+            &::before {
+                opacity: 1;
+            }
+
+            span {
+                color: #151B43;;
+            }
+
+            svg {
+                path {
+                    stroke: #151B43;
+                }
+            }
+        }
+
+        &.active {
+            &::before {
+                opacity: 1;
+            }
+
+            span {
+                color: #151B43;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-right: 16px;
+        }
+    }
+}
+
+.breadcrumbs {
+    margin-bottom: 74px;
+    &-list {
+        flex-wrap: wrap;
+
+        li {
+            position: relative;
+
+            a {
+                span {
+                    font-size: 14px;
+                    transition: $anim-default;
+                    color: rgba(#FFFFFF, .5);
+                }
+            }
+
+            &:not(:first-child) {
+                &::before {
+                    content: '-';
+                    margin: 0 10px;
+                    color: rgba(#FFFFFF, .5);
+                }
+            }
+
+            &:not(:last-child) {
+                &:hover {
+                    span {
+                        color: #FFFFFF;
+                    }
+                }
+            }
+
+            &:last-child {
+                a {
+                    span {
+                        color: #FFFFFF;
+                    }
+                }
+            }
+        }
+    }
+}
