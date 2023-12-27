@@ -1,14 +1,16 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    const link = document.querySelector('.review-info__link');
-    const descr = document.querySelector('.review-info__descr');
+    const links = document.querySelectorAll('.review-info__link');
+    const descrs = document.querySelectorAll('.review-info__descr');
 
-    link.addEventListener('click', function (event) {
+    links.forEach(function (link, index) {
+      link.addEventListener('click', function (event) {
         event.preventDefault();
-        descr.classList.toggle('expanded');
+        descrs[index].classList.toggle('expanded');
         link.classList.toggle('expanded');
+      });
     });
-});
+  });
 
 // swiper partners
 const swiperPartners = new Swiper('.partners-slider', {
