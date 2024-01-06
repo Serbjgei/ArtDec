@@ -4,13 +4,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const descrs = document.querySelectorAll('.review-info__descr');
 
     links.forEach(function (link, index) {
-      link.addEventListener('click', function (event) {
-        event.preventDefault();
-        descrs[index].classList.toggle('expanded');
-        link.classList.toggle('expanded');
-      });
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            descrs[index].classList.toggle('expanded');
+            link.classList.toggle('expanded');
+
+            // Update the text of the link based on its state
+            const isExpanded = link.classList.contains('expanded');
+            link.textContent = isExpanded ? 'Читать отзыв' : 'Закрыть отзыв';
+        });
     });
+});
+
+
+// object свайпер
+var swiperObject = new Swiper(".objects-wrapper", {
+    pagination: {
+      el: ".swiper-pagination",
+    },
   });
+
+
+
 
 // swiper partners
 const swiperPartners = new Swiper('.partners-slider', {
@@ -27,6 +42,26 @@ const swiperPartners = new Swiper('.partners-slider', {
     },
 });
 
+
+
+
+const swiperNews = new Swiper('.news-slider', {
+    slidesPerView: 'auto',
+    freeMode: true,
+    grabCursor: true,
+});
+
+// var swiper = new Swiper(".partners-slider", {
+//     slidesPerView: 3,
+//     grid: {
+//       rows: 2,  
+//     },
+//     spaceBetween: 30,
+//     pagination: {
+//       el: ".partners-slider-pagination",
+//       clickable: true,
+//     },
+//   });
 // swiper news
 const swiperHow = new Swiper(".how-slider", {
     slidesPerView: "auto",
