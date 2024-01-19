@@ -16,9 +16,55 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// video
+const videos = document.querySelectorAll('.mission-video-autoplay');
+const posters = document.querySelectorAll('.mission-video__poster');
+
+// Добавляем слушатель события click ко всем родительским контейнерам
+document.querySelectorAll('.mission-video').forEach(function(container, index) {
+    container.addEventListener('click', function () {
+        const video = videos[index];
+        const poster = posters[index];
+
+        if (video.paused) {
+            poster.style.display = 'none';
+            video.play();
+        } else {
+            
+            poster.style.display = 'block';
+            video.pause();
+        }
+    });
+});
+
+
+
+// burger
+const burger = document.getElementById('header-burger');
+
+// Добавляем обработчик события на клик по кнопке
+burger.addEventListener('click', toggleMenu);
+
+function toggleMenu() {
+    const menu = document.getElementById('menu');
+
+    if (menu.classList.contains('active')) {
+        menu.style.opacity = '0';
+        setTimeout(() => {
+            menu.classList.toggle('active');
+        }, 500);
+    } else {
+        menu.classList.toggle('active');
+        setTimeout(() => {
+            menu.style.opacity = '1';
+        });
+    }
+
+    burger.classList.toggle('active');
+}
 
 // object свайпер
-var swiperObject = new Swiper(".objects-wrapper", {
+var swiperObject = new Swiper(".objects-swiper", {
     pagination: {
       el: ".swiper-pagination",
     },
