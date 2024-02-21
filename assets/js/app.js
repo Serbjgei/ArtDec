@@ -1,27 +1,29 @@
 
-document.addEventListener('DOMContentLoaded', function () {
-    const links = document.querySelectorAll('.review-info__link');
-    const descrs = document.querySelectorAll('.review-info__descr');
 
-    links.forEach(function (link, index) {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            descrs[index].classList.toggle('expanded');
-            link.classList.toggle('expanded');
+// отзывы
+// document.addEventListener('DOMContentLoaded', function () {
+//     const links = document.querySelectorAll('.review-info__link');
+//     const descrs = document.querySelectorAll('.review-info__descr');
 
-            // Update the text of the link based on its state
-            const isExpanded = link.classList.contains('expanded');
-            link.textContent = isExpanded ? 'Читать отзыв' : 'Закрыть отзыв';
-        });
-    });
-});
+//     links.forEach(function (link, index) {
+//         link.addEventListener('click', function (event) {
+//             event.preventDefault();
+//             descrs[index].classList.toggle('expanded');
+//             link.classList.toggle('expanded');
+
+//             // Update the text of the link based on its state
+//             const isExpanded = link.classList.contains('expanded');
+//             link.textContent = isExpanded ? 'Читать отзыв' : 'Закрыть отзыв';
+//         });
+//     });
+// });
 
 // video
 const videos = document.querySelectorAll('.mission-video-autoplay');
 const posters = document.querySelectorAll('.mission-video__poster');
 
 // Добавляем слушатель события click ко всем родительским контейнерам
-document.querySelectorAll('.mission-video').forEach(function(container, index) {
+document.querySelectorAll('.mission-video').forEach(function (container, index) {
     container.addEventListener('click', function () {
         const video = videos[index];
         const poster = posters[index];
@@ -30,7 +32,7 @@ document.querySelectorAll('.mission-video').forEach(function(container, index) {
             poster.style.display = 'none';
             video.play();
         } else {
-            
+
             poster.style.display = 'block';
             video.pause();
         }
@@ -63,32 +65,102 @@ function toggleMenu() {
     burger.classList.toggle('active');
 }
 
+
+
+
 // object свайпер
-var swiperObject = new Swiper(".objects-swiper", {
-    pagination: {
-      el: ".swiper-pagination",
-    },
-  });
+var swiperObject = null;
+
+function initSwiper() {
+    if (window.innerWidth > 992) {
+        if (swiperObject !== null) {
+            swiperObject.destroy();
+            swiperObject = null;
+        }
+    } else {
+        if (swiperObject === null) {
+            swiperObject = new Swiper(".objects-swiper", {
+                spaceBetween: 20,
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+                autoHeight: true,
+            });
+        }
+    }
+}
+
+// Вызов функции при загрузке страницы и изменении размера экрана
+initSwiper();
+
+window.addEventListener('resize', function () {
+    initSwiper();
+});
+
+// Добавление обработчика для события 'orientationchange'
+window.addEventListener('orientationchange', function () {
+    initSwiper();
+});
 
 
 
 
 // swiper partners
 const swiperPartners = new Swiper('.partners-slider', {
-    slidesPerView: 'auto',
+    slidesPerView: 2,
+    grid: {
+        rows: 3,
+    },
+    spaceBetween: 20,
+
+
     freeMode: true,
     grabCursor: true,
     navigation: {
         nextEl: '.partners-panel__next',
         prevEl: '.partners-panel__prev',
     },
+
     pagination: {
         el: '.partners-slider-pagination',
         clickable: 'true',
     },
+    breakpoints: {
+
+        768: {
+            grid: {
+                rows: 1,
+            },
+            spaceBetween: 30,
+            slidesPerView: 'auto',
+
+
+        },
+
+    },
 });
 
 
+// swiper review 
+const swiperReview = new Swiper('.review-slider', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    // freeMode: true,
+    grabCursor: true,
+    navigation: {
+        nextEl: '.review-panel__next',
+        prevEl: '.review-panel__prev',
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 2,
+
+        },
+
+    },
+
+
+});
 
 
 const swiperNews = new Swiper('.news-slider', {
@@ -419,4 +491,6 @@ $(document).ready(function () {
     };
     formValidate();
 
+
+    console.log( "gjkl")
 });
